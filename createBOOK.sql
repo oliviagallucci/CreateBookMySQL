@@ -1,4 +1,5 @@
-DROP DATABASE IF EXISTS `book`;
+-- uncomment line below if you want to start fresh every time :) 
+-- DROP DATABASE IF EXISTS `book`;
 CREATE DATABASE IF NOT EXISTS `book` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `book`;
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)

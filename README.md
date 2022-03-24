@@ -4,7 +4,7 @@ A .SQL file that can be sourced to create a book database.
 ## ER Diagram of Initial Database
 Red lines indicate I do not know what I am doing. 
 
-View lastest update of ER Diagram [here][here].
+View **lastest update** of ER Diagram [here][here].
 
 ![Employee data](/ERDiagrams/swen261_initalDiagram.png?raw=true "v")
 <!---

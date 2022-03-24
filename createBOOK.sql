@@ -572,6 +572,26 @@ INSERT INTO `inventory` (`ISBN`, `Ranks`) VALUES
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
+-----------------------------------------------
+
+--
+-- Table structure for table `shoppingcart`
+--
+
+DROP TABLE IF EXISTS `shoppingcart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `shoppingcart` (
+  `UserID` int NOT NULL,
+  `ISBN` char(13) NOT NULL,
+  PRIMARY KEY (`UserID`, `ISBN`),
+  CONSTRAINT `shoppingcart_user_fk` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+-----------------------------------------------
+
 --
 -- Table structure for table `state`
 --

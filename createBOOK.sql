@@ -1,9 +1,8 @@
 -- uncomment line below if you want to start fresh every time :) 
--- DROP DATABASE IF EXISTS `book`;
-CREATE DATABASE IF NOT EXISTS `book` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+DROP DATABASE IF EXISTS `book`;
+CREATE DATABASE IF NOT EXISTS `book` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `book`;
 -- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
---
 -- Host: localhost    Database: book
 -- ------------------------------------------------------
 -- Server version	8.0.20
@@ -32,7 +31,7 @@ CREATE TABLE `author` (
   `FirstName` varchar(50) NOT NULL,
   `Photo` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`authorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +89,7 @@ CREATE TABLE `book` (
   KEY `book_publisherID_fk` (`PublisherID`),
   CONSTRAINT `book_category_fk` FOREIGN KEY (`Category`) REFERENCES `category` (`CatID`),
   CONSTRAINT `book_publisherID_fk` FOREIGN KEY (`PublisherID`) REFERENCES `publisher` (`PublisherID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +140,7 @@ CREATE TABLE `bookauthor` (
   KEY `bookauther_authorID_fk` (`AuthorID`),
   CONSTRAINT `bookauther_authorID_fk` FOREIGN KEY (`AuthorID`) REFERENCES `author` (`authorID`),
   CONSTRAINT `bookauthor_ISBN_fk` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +182,7 @@ CREATE TABLE `bookcondition` (
   `FullDescription` varchar(255) DEFAULT NULL,
   `Price` decimal(12,2) DEFAULT 30.00, 
   PRIMARY KEY (`Ranks`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +217,7 @@ CREATE TABLE `bookreview` (
   KEY `bookreview_reviewerID_fk` (`ReviewerID`),
   CONSTRAINT `bookreview_ISBN_fk` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`),
   CONSTRAINT `bookreview_reviewerID_fk` FOREIGN KEY (`ReviewerID`) REFERENCES `reviewer` (`ReviewerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +263,7 @@ CREATE TABLE `category` (
   `CatID` int NOT NULL,
   `CatDescription` varchar(24) DEFAULT NULL,
   PRIMARY KEY (`CatID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -298,15 +297,10 @@ CREATE TABLE `purchaselog` (
   `InventoryID` int NOT NULL,
   PRIMARY KEY (`UserID`, `InventoryID`),
   CONSTRAINT `purchaselog_user_fk` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
------------------------------------------------------------------------------------------------------
-
---
 -- Table structure for table `permrole`
---
 
 DROP TABLE IF EXISTS `permrole`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -315,7 +309,7 @@ CREATE TABLE `permrole` (
   `RoleNumber` int NOT NULL,
   `PermRole` varchar(30),
   PRIMARY KEY (`RoleNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,12 +326,7 @@ INSERT INTO `permrole` VALUES
 /*!40000 ALTER TABLE `permrole` ENABLE KEYS */;
 UNLOCK TABLES;
 
------------------------------------------------------------------------------------------------------
-
-
---
 -- Table structure for table `user`
---
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -352,14 +341,12 @@ CREATE TABLE `user` (
   `RoleNumber` int DEFAULT 1,
   PRIMARY KEY (`UserID`),
   CONSTRAINT `user_rolenumber_fk` FOREIGN KEY (`RoleNumber`) REFERENCES `permrole` (`RoleNumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 ALTER TABLE user AUTO_INCREMENT=1000000;
 
---
 -- Dumping data for table `user`
---
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
@@ -384,9 +371,7 @@ INSERT INTO `user` (`LastName`, `FirstName`, `PhoneNumber`, `UserName`,`Password
 ('Discord','Manager','(664) 555-2443','discord@cats.net','password', 3),
 ('Slack','Manager','(593) 555-2443','slack@aol.net','password', 4);
 
---
 -- Table structure for table `publisher`
---
 
 DROP TABLE IF EXISTS `publisher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -399,12 +384,10 @@ CREATE TABLE `publisher` (
   PRIMARY KEY (`PublisherID`),
   KEY `publisher_statecode_fk` (`StateCode`),
   CONSTRAINT `publisher_statecode_fk` FOREIGN KEY (`StateCode`) REFERENCES `state` (`StateCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `publisher`
---
 
 LOCK TABLES `publisher` WRITE;
 /*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
@@ -425,9 +408,7 @@ INSERT INTO `publisher` VALUES
 /*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
 -- Table structure for table `reviewer`
---
 
 DROP TABLE IF EXISTS `reviewer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -437,12 +418,10 @@ CREATE TABLE `reviewer` (
   `Name` varchar(20) NOT NULL,
   `EmployedBy` char(30) DEFAULT NULL,
   PRIMARY KEY (`ReviewerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `reviewer`
---
 
 LOCK TABLES `reviewer` WRITE;
 /*!40000 ALTER TABLE `reviewer` DISABLE KEYS */;
@@ -476,9 +455,7 @@ INSERT INTO `reviewer` VALUES
 /*!40000 ALTER TABLE `reviewer` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
 -- Table structure for table `inventory`
---
 
 DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -491,14 +468,12 @@ CREATE TABLE `inventory` (
   PRIMARY KEY (`InventoryID`), 
   CONSTRAINT `inventory_ISBN_fk` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`),
   CONSTRAINT `inventory_rank_fk` FOREIGN KEY (`Ranks`) REFERENCES `bookcondition` (`Ranks`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
   
 ALTER TABLE inventory AUTO_INCREMENT=1000000; 
 
---
 -- Dumping data for table `inventory`
---
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
@@ -572,11 +547,7 @@ INSERT INTO `inventory` (`ISBN`, `Ranks`) VALUES
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
------------------------------------------------
-
---
 -- Table structure for table `shoppingcart`
---
 
 DROP TABLE IF EXISTS `shoppingcart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -586,15 +557,10 @@ CREATE TABLE `shoppingcart` (
   `ISBN` char(13) NOT NULL,
   PRIMARY KEY (`UserID`, `ISBN`),
   CONSTRAINT `shoppingcart_user_fk` FOREIGN KEY (`ISBN`) REFERENCES `book` (`ISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
------------------------------------------------
-
---
 -- Table structure for table `state`
---
 
 DROP TABLE IF EXISTS `state`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -603,12 +569,10 @@ CREATE TABLE `state` (
   `StateCode` char(2) NOT NULL,
   `StateName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`StateCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `state`
---
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
